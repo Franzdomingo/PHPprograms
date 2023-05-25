@@ -1,0 +1,63 @@
+body {
+    background: repeating-linear-gradient(45deg, gold, gold 50px, black 50px, black 100px);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container > * {
+    margin: 10px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-container label {
+    margin-right: 10px;
+    width: auto;
+    color: white;
+}
+
+.input-container input[type="number"] {
+    width: 60px;
+}
+
+form {
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+form p {
+    margin-top: 0;
+}
+
+form input[type="number"],
+form button {
+    color: white;
+}
+
+form button {
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+form button.reset-button {
+    color: black;
+}

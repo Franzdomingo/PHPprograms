@@ -30,3 +30,4 @@ echo "Your current credit is: " . $_SESSION['credit'];
     <br>
     <input type="submit" value="Submit">
 </form>
+
