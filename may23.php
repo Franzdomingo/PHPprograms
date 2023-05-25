@@ -5,7 +5,6 @@
     }
 
     $credit = $_SESSION["credit"];
-    $feedback = ""; // Initialize feedback message
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["reset"])) {
@@ -19,9 +18,6 @@
                 $credit += $bet;
             } else {
                 $credit -= $bet;
-                if ($credit <= 0) {
-                    $feedback = "You're in debt";
-                }
             }
             $_SESSION["credit"] = $credit;
         }
@@ -33,11 +29,50 @@
     <title>May 23</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
-        /* ...existing styles... */
-
-        .feedback {
-            color: red;
-            margin-top: 10px;
+        body {
+            background: repeating-linear-gradient(45deg, gold, gold 50px, black 50px, black 100px);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+        background-color: black;
+        padding: 20px;
+        border: 4px solid white; /* Add border style */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Add box shadow for depth */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container > * {
+            margin: 10px;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .input-container label {
+            margin-right: 10px;
+            width: 40px;
+        }
+        .input-container input[type="number"] {
+            width: 60px;
+        }
+        form {
+            background-color: black;
+            padding: 20px;
+        }
+        form p {
+            margin-top: 0;
+        }
+        form input[type="number"],
+        form button {
+            color: white;
         }
     </style>
 </head>
@@ -54,12 +89,11 @@
                 <input type="number" name="guess" value="1" min="1" max="9">
             </div>
             <p>You have <?= $credit ?> credits</p>
-            <?php if (!empty($feedback)): ?>
-                <p class="feedback"><?= $feedback ?></p>
-            <?php endif; ?>
             <button type="submit">Guess</button>
             <button type="submit" name="reset">Reset</button>
         </form>
     </div>
 </body>
 </html>
+
+//
