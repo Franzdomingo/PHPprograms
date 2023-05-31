@@ -11,33 +11,14 @@
       border-radius: 5px;
       background-color: #f2f2f2;
     }
-    .form-group {
-      margin-bottom: 20px;
+    h2 {
+      margin-bottom: 10px;
     }
-    .form-group label {
-      display: block;
+    p {
       margin-bottom: 5px;
-      font-weight: bold;
-    }
-    .form-group input[type="text"],
-    .form-group select {
-      width: 100%;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-    .form-group input[type="checkbox"] {
-      margin-top: 5px;
-    }
-    .status-message {
-      margin-top: 20px;
-      font-weight: bold;
     }
     .btn-container {
-      text-align: center;
-    }
-    .btn-container button {
-      margin-right: 10px;
+      margin-top: 20px;
     }
   </style>
   <script src="script.js"></script>
@@ -45,7 +26,7 @@
 <body>
   <div class="container">
     <h2>Student Record</h2>
-    <form id="student-form" onsubmit="submitForm(event)">
+    <form id="student-form">
       <div class="form-group">
         <label for="student-number">Student No.</label>
         <input type="text" id="student-number" placeholder="Enter student number" required>
@@ -85,26 +66,46 @@
         <input type="text" id="midterm-exam" placeholder="Enter midterm exam grade" required>
       </div>
       <div class="form-group">
-        <abel for="honor-student">Honor Student:</label>
+        <label for="final-exam">Final Exam (25%):</label>
+        <input type="text" id="final-exam" placeholder="Enter final exam grade" required>
+      </div>
+      <div class="form-group">
+        <label for="honor-student">Honor Student:</label>
         <input type="checkbox" id="honor-student">
-        </div>
-        <div class="btn-container">
+      </div>
+      <div class="btn-container">
         <button type="submit">SUBMIT</button>
         <button type="reset">RESET</button>
-        </div>
-        </form>
-        <div id="report" style="display: none;">
-        <hr>
-        <h2>Report</h2>
-        <p id="student-number-report"></p>
-        <p id="student-name-report"></p>
-        <p id="course-report"></p>
-        <p id="year-level-report"></p>
-        <p id="class-standing-report"></p>
-        <p id="midterm-exam-report"></p>
-        <p id="final-exam-report"></p>
-        <p id="status-message"></p>
-        </div>
-        </div>
-        </body>
-        </html>
+      </div>
+    </form>
+  </div>
+  <script>
+  // Place this code in the same HTML file
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("student-form");
+    form.addEventListener("submit", submitForm);
+  });
+
+  function submitForm(event) {
+    event.preventDefault();
+
+    // Get form values
+    const studentNumber = document.getElementById("student-number").value;
+    const studentName = document.getElementById("student-name").value;
+    const course = document.getElementById("course").value;
+    const yearLevel = document.getElementById("year-level").value;
+    const classStanding = document.getElementById("class-standing").value;
+    const midtermExam = document.getElementById("midterm-exam").value;
+    const finalExam = document.getElementById("final-exam").value;
+    const honorStudent = document.getElementById("honor-student").checked;
+
+    // Redirect to seatwork2.1.php with form data as query parameters
+    const queryString = `studentNumber=${encodeURIComponent(studentNumber)}&studentName=${encodeURIComponent(studentName)}&course=${encodeURIComponent(course)}&yearLevel=${encodeURIComponent(yearLevel)}&classStanding=${encodeURIComponent(classStanding)}&midtermExam=${encodeURIComponent(midtermExam)}&finalExam=${encodeURIComponent(finalExam)}&honorStudent=${encodeURIComponent(honorStudent)}`;
+    window.location.href = `seatwork2.1.php?${queryString}`;
+  }
+</script>
+
+</body>
+</html>
+
