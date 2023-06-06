@@ -1,1 +1,0 @@
-<?php echo "Graduated Highschool <br> High honor Student"; ?><br>
